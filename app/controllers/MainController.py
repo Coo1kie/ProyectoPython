@@ -4,7 +4,7 @@ class MainController():
         pass
 
     def index(self):
-        #user = {'name': 'Tupaj','surname':'Martinez'}
+        user1 = {'name': 'Tupaj','surname':'Martinez'}
         #users = User.query.all()
-        return render_template('index.html')
+        return render_template('index.html', user=user1)
 maincontroller = MainController()
