@@ -4,12 +4,28 @@
 {% block body %}
  
   <div class="container">
-    <h1 class="mt-5">Nombre: {{user.name}}</h1>
-    <h1 class="mt-5">Apellido: {{user.surname}}</h1>
-    <p class="lead">Pin a footer  to the bottom of the viewport in desktop browser with 
-        <code class="small">padding-top: 60px;</code>on <code class="small">main &gt; .container</code>.</p>
-    
-    <p>Back to <a href="#">the dafault sticky footer</a>minus the navbar.</p>
+    <h1 class="mt-5">Usuarios</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Usuario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in users %}
+        <tr>
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.username}}</td>
+        </tr>    
+        {%endfor%}    
+      </tbody>
+    </table>
+
   </div>
 
  
