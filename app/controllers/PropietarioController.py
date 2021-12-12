@@ -7,7 +7,8 @@ class PropietarioController():
         pass
 
     def index1(self):
-        return render_template('propietarios/index.html') 
+        propietarios=Propietario.query.all() #Propietario es del modelo, query-> select* from propietarios
+        return render_template('propietarios/index.html', propietarios=propietarios) 
     def create(self):
         return render_template('propietarios/create.html') #rederizar vista
 
@@ -25,5 +26,36 @@ class PropietarioController():
 
             flash('El registro se realizo con exito!!')
             return redirect(url_for('propietario_router.index'))
-        
+
+    def delete(self,_ci):
+        propietario=Propietario.query.get(_ci)
+        db.session.delete(propietario)
+        db.session.commit()
+        flash('El registro se eliminado con exito!!')
+        return redirect(url_for('propietario_router.index'))
+
+    def edit(self, _ci):
+        propietario=Propietario.query.get(_ci) #Propietario es del modelo, get va a obtener los datos de un ci
+        return render_template('propietarios/edit.html', propietario=propietario) #el segundo propietario es la variable
+
+    def update(self, _ci):
+        if request.method=='POST':
+            ciV = request.form['ci']
+            nombreV = request.form['nombre']
+            apellidoV = request.form['apellido']
+            telcelV = request.form['telcel']
+
+            propietarioDB=Propietario.query.get(_ci)
+            
+            propietarioDB.ci=ciV
+            propietarioDB.nombre=nombreV
+            propietarioDB.apellido=apellidoV
+            propietarioDB.telcel=telcelV
+
+            db.session.commit()
+
+            flash('El registro se actualizo con exito!!')
+            return redirect(url_for('propietario_router.index'))
+
+
 propietariocontroller = PropietarioController()

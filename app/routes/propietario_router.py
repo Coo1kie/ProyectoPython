@@ -14,3 +14,15 @@ def create():#ruta
 @propietario_router.route('/propietarios/store',methods=['POST'])
 def store():#ruta 
     return propietariocontroller.store() # del controlador
+
+@propietario_router.route('/propietarios/<int:ci>/delete',methods=['GET'])
+def delete(ci):#ruta 
+    return propietariocontroller.delete(ci) # del controlador
+
+@propietario_router.route('/propietarios/<int:ci>/edit',methods=['GET'])
+def edit(ci):#ruta 
+    return propietariocontroller.edit(ci) # del controlador
+
+@propietario_router.route('/propietarios/<int:ci>/update',methods=['POST'])
+def update(ci):#ruta 
+    return propietariocontroller.update(ci) # del controlador

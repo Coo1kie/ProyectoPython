@@ -3,13 +3,70 @@
 <!-- Inicio bloque body -->
 {% block body %}
  
-  <section class="container">
-    <div class="content">
-        <div class="row">
-            <h1>Edit</h1>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+
+
+          <form action="{{url_for('propietario_router.update', ci=propietario.ci)}}" method="POST" class="row g-3 needs-validation" novalidate>
+
+            <div class="col-md-3">
+              <label for="ci" class="form-label">CI: </label>
+              <input type="text" class="form-control" value="{{propietario.ci}}" name="ci" required>
+              <div class="invalid-feedback">
+                Por favor ingrese su CI
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="nombre" class="form-label">Nombre: </label>
+              <input type="text" class="form-control" value="{{propietario.nombre}}" name="nombre" required>
+              <div class="valid-feedback">
+                Los datos son Requeridos!
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="apellido" class="form-label">Apellido: </label>
+              <input type="text" class="form-control" value="{{propietario.apellido}}" name="apellido" required>
+              <div class="valid-feedback">
+                Los datos son Requeridos!
+              </div>
+            </div>
+                               
+            <div class="col-md-3">
+              <label for="telcel" class="form-label">Telefono/Celular: </label>
+              <input type="text" class="form-control" value="{{propietario.telcel}}" name="telcel" >
+              <div class="invalid-feedback">
+                Los datos son Requeridos!
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+          </form>
+
+          
         </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
  
 {% endblock %}
 <!-- Fin bloque body -->
@@ -21,7 +78,26 @@
  
 {% block js%}
  <script>
-     //alert("hello")
+     // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
  </script>
 {% endblock %}
 <!-- Fin bloque scripts -->
