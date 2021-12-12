@@ -1,0 +1,48 @@
+{% extends 'layouts/app.html' %}
+ 
+<!-- Inicio bloque body -->
+{% block body %}
+ 
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Mascotas</h1>
+      <p class="lead text-muted">Inicio de Mascotas</p>
+      <p>
+        <a href="{{url_for('mascota_router.create')}}" class="btn btn-primary my-2">Nuevo</a>
+        
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row ">
+    <div class="col-lg-12 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <div class="shadow p-3 mb-5 bg-body rounded">Regular shadow</div>
+          <u1>
+            <li></li>
+          </u1>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+ 
+{% endblock %}
+<!-- Fin bloque body -->
+ 
+{% block css%}
+ 
+{% endblock %}
+<!-- Fin bloque estilos -->
+ 
+{% block js%}
+ <script>
+     //alert("hello")
+ </script>
+{% endblock %}
+<!-- Fin bloque scripts -->
