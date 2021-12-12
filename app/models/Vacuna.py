@@ -14,8 +14,9 @@ class Vacuna(db.Model):
 
     #relacion foreign
     hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial=relationship('HistorialC', back_populates="vacuna")
-
+    historial=relationship('Historial', back_populates="vacuna")
+    
+    #relacion usuario-vacuna
     user = relationship(
         "User",
         secondary=atiende_v,

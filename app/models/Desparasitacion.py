@@ -12,10 +12,11 @@ class Desparasitacion(db.Model):
     peso=db.Column(db.Float)
     prox_d=db.Column(db.Date)
 
-    #relacion foreign
+    #relacion foreign Historial-Desparasitacion
     hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial=relationship('HistorialC', back_populates="desparasitacion")
+    historial=relationship('Historial', back_populates="desparasitacion")
 
+    #relacion USUARIO-desparasitacion
     user = relationship(
         "User",
         secondary=atiende_d,

@@ -17,8 +17,11 @@ class Mascota(db.Model):
     #historial=relationship('HistorialC', back_populates="mascota")
 
     #relacion foreign historial-mascota uno a uno 1manera
-    hc_id = db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial = relationship("Historial", back_populates="mascota")
+    
+    #hc_id = db.Column(db.Integer, db.ForeignKey('historial.idhc'))
+    #historial = relationship("Historial", back_populates="mascota")
+
+    historial= relationship("Historial", uselist=False, back_populates="mascota")
 
     #relacion foreign historial-mascota uno a uno 2manera
     #hc_id = db.Column(db.Integer, db.ForeignKey('historial.idhc'))

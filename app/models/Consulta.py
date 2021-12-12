@@ -17,9 +17,9 @@ class Consulta(db.Model):
 
     #relacion foreign consulta-historial
     hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial=relationship('HistorialC', back_populates="consulta")
+    historial=relationship('Historial', back_populates="consulta")
 
-
+    #relacion usuario-consulta
     user = relationship(
         "User",
         secondary=atiende_c,

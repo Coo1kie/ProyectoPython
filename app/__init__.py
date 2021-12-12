@@ -37,6 +37,7 @@ app.register_blueprint(historial_router)
 from app.routes.mascota_router import mascota_router
 app.register_blueprint(mascota_router)
 
+
 from app.routes.propietario_router import propietario_router
 app.register_blueprint(propietario_router)
 
