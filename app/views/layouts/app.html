@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Fixed top navbar example · Bootstrap v5.0</title>
+    <title>San Martin</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
 
@@ -36,6 +36,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
+      {% if current_user.is_authenticated %}
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -62,10 +63,27 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+      <div class="btn-group m">
+        <button type="button" class="btn btn-secondary dropdown-toggle text-light" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          {{current_user.name}}
+        </button>
+        <ul class="dropdown-menu  dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-end">
+          <li><a class="dropdown-item" href="{{url_for('auth_router.logout')}}">Cerrar Sesion</a></li>
+          <li><a class="dropdown-item" href="#">Ajustes</a></li>
+          <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Iniciar Sesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Registrarse</a>
+        </li>
+      </ul>
+      {% endif %}
     </div>
   </div>
 </nav>
