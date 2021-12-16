@@ -6,7 +6,6 @@ class MainController():
         pass
 
     def index(self):
-        #users = {'name': 'Tupaj','surname':'Martinez'}
         users = User.query.all() #obtiene todo
-        return render_template('index.html', users=users) #el primer users es el que manda al index
+        return render_template('home.html', users=users) #el primer users es el que manda al index
 maincontroller = MainController()

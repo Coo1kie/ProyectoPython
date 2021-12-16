@@ -1,9 +1,6 @@
 from sqlalchemy.orm import relationship
 from app import db
-atiende_v = db.Table('atiende_v', db.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('vacuna_id', db.Integer, db.ForeignKey('vacuna.idv'))
-)
+
 class Vacuna(db.Model):
     __tablename__='vacuna'
     idv=db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -13,11 +10,15 @@ class Vacuna(db.Model):
     prox_v=db.Column(db.Date)
 
     #relacion foreign
-    hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial=relationship('Historial', back_populates="vacuna")
+    #hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
+    #historial=relationship('Historial', back_populates="vacuna")
     
     #relacion usuario-vacuna
-    user = relationship(
-        "User",
-        secondary=atiende_v,
-        back_populates="vacuna")
+    #user = relationship(
+    #    "User",
+    #    secondary=atiende_v,
+    #    back_populates="vacuna")
+
+        # Atributo o la clave foranea consulta-mascota
+    #mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
+    #mascota=relationship('Mascota', back_populates="vacuna")

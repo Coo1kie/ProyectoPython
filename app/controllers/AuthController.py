@@ -12,7 +12,8 @@ def load_user(user_id):
 class AuthController():
     def __init__(self):
         pass
-
+    def index(self):
+        return render_template('welcome.html')
     def signup(self):
         if request.method=='POST':
             name = request.form['name']
@@ -38,7 +39,7 @@ class AuthController():
                     return redirect(url_for('main_router.main'))
 
             flash('Usuario no existe, o credenciales no Vaidas')
-            return redirect(url_for('auth_router.login'))
+            return redirect(url_for('main_router.main'))
         return render_template('auth/login.html') #renderiza la vista 
         
     def logout(self):

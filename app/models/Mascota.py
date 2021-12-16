@@ -6,28 +6,34 @@ class Mascota(db.Model):
     name=db.Column(db.String(50))
     especie=db.Column(db.String(50), unique=True)
     raza=db.Column(db.String(50), unique=True)
-    sexo=db.Column(db.String(20))
+    genero=db.Column(db.String(20))
     color=db.Column(db.String(30))
     fechanac=db.Column(db.Date)
     esterilizacion=db.Column(db.String(2))
     foto=db.Column(db.String(30))
 
-    #relacion foreign historial-mascota uno a muchos erro
+            #relacion foreign historial-mascota uno a muchos erro
     #hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
     #historial=relationship('HistorialC', back_populates="mascota")
 
-    #relacion foreign historial-mascota uno a uno 1manera
+             #relacion foreign historial-mascota uno a uno 1manera
     
     #hc_id = db.Column(db.Integer, db.ForeignKey('historial.idhc'))
     #historial = relationship("Historial", back_populates="mascota")
 
-    historial= relationship("Historial", uselist=False, back_populates="mascota")
+    #historial= relationship("Historial", uselist=False, back_populates="mascota")
 
     #relacion foreign historial-mascota uno a uno 2manera
     #hc_id = db.Column(db.Integer, db.ForeignKey('historial.idhc'))
     #historial = relationship("Historial", backref=backref("mascota", uselist=False))
 
     #relacion foreign propietario-mascota
-    propietario_id=db.Column(db.String(15), db.ForeignKey('propietario.ci'))
-    propietario=relationship('Propietario', back_populates="mascota")
+    propietario_id=db.Column(db.String(15), db.ForeignKey('propietario.ci'), nullable=False)
+    #propietario=relationship('Propietario', back_populates="mascota")
+
+    #consulta = db.relationship('Consulta', backref='mascota', lazy='dynamic')
+
+    #vacuna = db.relationship('Vacuna', backref='mascota', lazy='dynamic')
+
+    #desparasitacion = db.relationship('Desparasitacion', backref='mascota', lazy='dynamic')
 

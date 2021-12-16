@@ -1,4 +1,6 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, request, redirect, flash
+from app.models.Consulta import Consulta
+from app import db
 class ConsultaController():
     def __init__(self):
         pass
@@ -7,4 +9,20 @@ class ConsultaController():
         return render_template('consultas/index.html') 
     def create(self):
         return render_template('consultas/create.html') #rederizar vista
+    def store(self):
+        if request.method == 'POST':
+            motivo = request.form['motivo']
+            fecha_c = request.form['fecha_c']
+            peso = request.form['peso']
+            anamnesis=request.form['anamnesis']
+            tratamiento=request.form['tratamiento']
+            mascota_id = request.values['mascota_id']
+            
+            consultaadd = Consulta(motivo=motivo, fecha_c=fecha_c, peso=peso,
+            anamnesis=anamnesis,tratamiento=tratamiento, mascota_id=mascota_id)
+
+            db.session.add(consultaadd)
+            db.session.commit()
+            flash('Consulta creado exitosamente')
+            return redirect(url_for('consulta_router.index'))
 consultacontroller = ConsultaController()

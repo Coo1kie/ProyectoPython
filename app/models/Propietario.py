@@ -7,5 +7,5 @@ class Propietario(db.Model):
     telcel=db.Column(db.String(50))
 
     #relacion uno a muchos
-    #mascota=db.relationship('Mascota', backref="propietario")
+    mascotas=db.relationship('Mascota', backref="propietario", lazy='dynamic')
     

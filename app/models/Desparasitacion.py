@@ -1,9 +1,6 @@
 from sqlalchemy.orm import relationship
 from app import db
-atiende_d = db.Table('atiende_d', db.metadata,
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('desparasitacion_id', db.Integer, db.ForeignKey('desparasitacion.idd'))
-)
+
 class Desparasitacion(db.Model):
     __tablename__='desparasitacion'
     idd=db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -13,11 +10,15 @@ class Desparasitacion(db.Model):
     prox_d=db.Column(db.Date)
 
     #relacion foreign Historial-Desparasitacion
-    hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
-    historial=relationship('Historial', back_populates="desparasitacion")
+    #hist_id=db.Column(db.Integer, db.ForeignKey('historial.idhc'))
+    #historial=relationship('Historial', back_populates="desparasitacion")
 
     #relacion USUARIO-desparasitacion
-    user = relationship(
-        "User",
-        secondary=atiende_d,
-        back_populates="desparacitacion")
+    #user = relationship(
+    #    "User",
+    #    secondary=atiende_d,
+    #    back_populates="desparacitacion")
+    
+    # Atributo o la clave foranea despaarasitacion-mascota
+    #mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
+    #mascota=relationship('Mascota', back_populates="desparasitacion")

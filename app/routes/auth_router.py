@@ -3,6 +3,10 @@ from app.controllers.AuthController import authcontroller
 
 auth_router = Blueprint('auth_router', __name__)
 
+@auth_router.route('/',methods=['GET'])
+def main():
+    return authcontroller.index()#metodo del controlador
+
 @auth_router.route('/signup',methods=['GET','POST'])
 def signup():#ruta principal
     return authcontroller.signup() #signup metodo  del controlador
