@@ -20,5 +20,5 @@ class Desparasitacion(db.Model):
     #    back_populates="desparacitacion")
     
     # Atributo o la clave foranea despaarasitacion-mascota
-    #mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
+    mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
     #mascota=relationship('Mascota', back_populates="desparasitacion")

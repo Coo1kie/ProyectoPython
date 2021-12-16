@@ -1,4 +1,5 @@
 from flask import render_template, url_for, request, redirect, flash
+from app.models.Mascota import Mascota
 from app.models.Consulta import Consulta
 from app import db
 class ConsultaController():
@@ -6,9 +7,12 @@ class ConsultaController():
         pass
 
     def index1(self):
-        return render_template('consultas/index.html') 
+        consultas=Consulta.query.join(Mascota).filter().all()
+      
+        return render_template('consultas/index.html', consultas=consultas) 
     def create(self):
-        return render_template('consultas/create.html') #rederizar vista
+        mascotas=Mascota.query.all()
+        return render_template('consultas/create.html', mascotas=mascotas) #rederizar vista
     def store(self):
         if request.method == 'POST':
             motivo = request.form['motivo']
@@ -25,4 +29,11 @@ class ConsultaController():
             db.session.commit()
             flash('Consulta creado exitosamente')
             return redirect(url_for('consulta_router.index'))
+
+    def delete(self, _idc):
+        consulta = Consulta.query.get(_idc)
+        db.session.delete(consulta)
+        db.session.commit()
+        flash('Eimnacion exitosa')
+        return redirect(url_for('consulta_router.index'))
 consultacontroller = ConsultaController()

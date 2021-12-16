@@ -31,9 +31,9 @@ class Mascota(db.Model):
     propietario_id=db.Column(db.String(15), db.ForeignKey('propietario.ci'), nullable=False)
     #propietario=relationship('Propietario', back_populates="mascota")
 
-    #consulta = db.relationship('Consulta', backref='mascota', lazy='dynamic')
+    consultas = db.relationship('Consulta', backref='mascota', lazy='dynamic')
 
-    #vacuna = db.relationship('Vacuna', backref='mascota', lazy='dynamic')
+    vacunas = db.relationship('Vacuna', backref='mascota', lazy='dynamic')
 
     #desparasitacion = db.relationship('Desparasitacion', backref='mascota', lazy='dynamic')
 

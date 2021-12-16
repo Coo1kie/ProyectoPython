@@ -13,3 +13,13 @@ def index():#ruta principal
 @login_required
 def create():#ruta 
     return vacunacontroller.create() # del controlador
+
+@vacuna_router.route('/vacunas/store',methods=['POST'])
+@login_required
+def store():#ruta 
+    return vacunacontroller.store() # del controlador
+
+@vacuna_router.route('/vacunas/<int:idv>/delete',methods=['GET'])
+@login_required
+def delete(idv):#ruta 
+    return vacunacontroller.delete(idv) # del controlador

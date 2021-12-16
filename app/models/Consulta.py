@@ -22,7 +22,7 @@ class Consulta(db.Model):
     #    back_populates="consulta")
 
     # Atributo o la clave foranea consulta-mascota
-    #mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
+    mascota_id = db.Column(db.Integer, db.ForeignKey('mascota.idm'), nullable=False)
     #mascota=relationship('Mascota', back_populates="consulta")
 
    
